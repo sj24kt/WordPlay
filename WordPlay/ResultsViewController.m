@@ -35,7 +35,7 @@
                             value:[UIFont fontWithName:@"HelveticaNeue-Bold" size:20.0]
                             range:(NSRange){nameRange.location, [self.name length]}];
         [finalFormat addAttribute:NSForegroundColorAttributeName
-                        value:[UIColor yellowColor]
+                        value:[UIColor blueColor]
                         range:nameRange];
 
         // adjective
@@ -43,7 +43,7 @@
                             value:[UIFont fontWithName:@"HelveticaNeue-Bold" size:20.0]
                             range:(NSRange){adjectiveRange.location, [self.adjective length]}];
         [finalFormat addAttribute:NSForegroundColorAttributeName
-                        value:[UIColor greenColor]
+                        value:[UIColor orangeColor]
                         range:adjectiveRange];
 
         // adverb
@@ -51,16 +51,16 @@
                         value:[UIFont fontWithName:@"HelveticaNeue-Bold" size:20.0]
                         range:(NSRange){adverbRange.location, [self.adverb length]}];
         [finalFormat addAttribute:NSForegroundColorAttributeName
-                        value:[UIColor blueColor]
+                        value:[UIColor redColor]
                         range:adverbRange];
 
         // noun
         [finalFormat addAttribute:NSFontAttributeName
-                            value:[UIFont fontWithName:@"HelveticaNeue-Bold" size:20.0]
-                            range:(NSRange){nounRange.location, [self.noun length]}];
+                        value:[UIFont fontWithName:@"HelveticaNeue-Bold" size:20.0]
+                        range:(NSRange){nounRange.location, [self.noun length]}];
         [finalFormat addAttribute:NSForegroundColorAttributeName
-                            value:[UIColor redColor]
-                        range:adverbRange];
+                        value:[UIColor greenColor]
+                        range:nounRange];
     [finalFormat endEditing];
 
     // set the text field view
