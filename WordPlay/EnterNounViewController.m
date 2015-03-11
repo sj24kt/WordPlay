@@ -7,9 +7,6 @@
 //
 
 #import "EnterNounViewController.h"
-#import "EnterNameViewController.h"
-#import "EnterAdjectiveViewController.h"
-#import "EnterAdverbViewController.h"
 #import "ResultsViewController.h"
 
 @interface EnterNounViewController ()

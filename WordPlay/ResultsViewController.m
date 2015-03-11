@@ -7,10 +7,6 @@
 //
 
 #import "ResultsViewController.h"
-#import "EnterNameViewController.h"
-#import "EnterAdjectiveViewController.h"
-#import "EnterAdverbViewController.h"
-#import "EnterNounViewController.h"
 #import "CoreText/CoreText.h"
 
 @interface ResultsViewController ()
@@ -52,8 +48,8 @@
 
         // adverb
         [finalFormat addAttribute:NSFontAttributeName
-                            value:[UIFont fontWithName:@"HelveticaNeue-Bold" size:20.0]
-                            range:(NSRange){adverbRange.location, [self.adverb length]}];
+                        value:[UIFont fontWithName:@"HelveticaNeue-Bold" size:20.0]
+                        range:(NSRange){adverbRange.location, [self.adverb length]}];
         [finalFormat addAttribute:NSForegroundColorAttributeName
                         value:[UIColor blueColor]
                         range:adverbRange];
