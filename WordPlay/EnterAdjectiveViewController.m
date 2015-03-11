@@ -7,8 +7,11 @@
 //
 
 #import "EnterAdjectiveViewController.h"
+#import "EnterAdverbViewController.h"
 
 @interface EnterAdjectiveViewController ()
+
+@property (strong, nonatomic) IBOutlet UITextField *adjectiveTextField;
 
 @end
 
@@ -16,22 +19,35 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+// if the textfield is empty, do not continue to next ViewController
+-(BOOL)shouldPerformSegueWithIdentifier:(NSString *)identifier sender:(UITextField *)sender {
+
+    if ([self.adjectiveTextField.text isEqualToString:@""]) {
+
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"No adjective entered" message:@"You must enter an adjective to proceed" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+
+        [alert show];
+        return NO;
+
+    } else {
+        return YES;
+    }
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(UIButton *)sender {
+    EnterAdverbViewController *adverbViewController = segue.destinationViewController;
+    adverbViewController.name = self.name;
+    adverbViewController.adjective = self.adjectiveTextField.text;
 }
-*/
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    // dismiss the keyboard
+    [self.adjectiveTextField resignFirstResponder];
+    return NO;
+}
+
 
 @end

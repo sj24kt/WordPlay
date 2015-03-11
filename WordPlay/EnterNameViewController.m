@@ -7,8 +7,11 @@
 //
 
 #import "EnterNameViewController.h"
+#import "EnterAdjectiveViewController.h"
 
 @interface EnterNameViewController ()
+
+@property (strong, nonatomic) IBOutlet UITextField *nameTextField;
 
 @end
 
@@ -16,22 +19,33 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+// if the textfield is empty, do not continue to next ViewController
+-(BOOL)shouldPerformSegueWithIdentifier:(NSString *)identifier sender:(UITextField *)sender {
+
+    if ([self.nameTextField.text isEqualToString:@""]) {
+
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"No name entered" message:@"You must enter a name to proceed" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+
+        [alert show];
+        return NO;
+
+    } else {
+        return YES;
+    }
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(UIButton *)sender {
+    EnterAdjectiveViewController *enterAdjectiveViewController = segue.destinationViewController;
+    enterAdjectiveViewController.name = self.nameTextField.text;
 }
-*/
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    // dismiss the keyboard
+    [self.nameTextField resignFirstResponder];
+    return NO;
+}
 
 @end

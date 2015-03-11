@@ -9,5 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface EnterNounViewController : UIViewController
-
+@property NSString *name;
+@property NSString *adjective;
+@property NSString *adverb;
 @end
